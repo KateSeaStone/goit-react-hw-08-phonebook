@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../redux/auth/auth-operations";
+
 // import '../styles/pages.scss';
 
 export default function RegisterPage() {

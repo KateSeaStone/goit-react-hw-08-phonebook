@@ -1,32 +1,51 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, Suspense, lazy } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import { getCurrentUser } from "../src/redux/auth/auth-operations";
+import { getIsGettingCurrent } from "./redux/auth/auth-selectors";
 import AppBar from "./components/AppBar";
 import Container from "./components/Container";
-import HomeView from "./views/HomeView";
-import RegisterView from "./views/RegisterView";
-import LoginView from "./views/LoginView";
-import ContactsView from "./views/ContactsView";
-import "./App.scss";
+import PrivateRoute from "./components/PrivatRoute/PrivateRoute";
+import PublicRoute from "./components/PublicRoute/PublicRoute";
+
+const HomeView = lazy(() => import("./views/HomeView"));
+const ContactsView = lazy(() => import("./views/ContactsView"));
+const RegisterView = lazy(() => import("./views/RegisterView"));
+const LoginView = lazy(() => import("./views/LoginView"));
 
 export default function App() {
   const dispatch = useDispatch();
+  const isGettingCurrent = useSelector(getIsGettingCurrent);
 
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
   return (
-    <Container>
-      <AppBar />
+    !isGettingCurrent && (
+      <Container>
+        <AppBar />
 
-      <Switch>
-        <Route path="/" exact component={HomeView} />
-        <Route path="/register" component={RegisterView} />
-        <Route path="/login" component={LoginView} />
-        <Route path="/contacts" component={ContactsView} />
-      </Switch>
-    </Container>
+        <Switch>
+          <Suspense fallback={<p>Loading...</p>}>
+            <PublicRoute exact path="/">
+              <HomeView />
+            </PublicRoute>
+
+            <PublicRoute path="/register" restricted>
+              <RegisterView />
+            </PublicRoute>
+
+            <PublicRoute path="/login" restricted>
+              <LoginView />
+            </PublicRoute>
+
+            <PrivateRoute path="/contacts">
+              <ContactsView />
+            </PrivateRoute>
+          </Suspense>
+        </Switch>
+      </Container>
+    )
   );
 }
