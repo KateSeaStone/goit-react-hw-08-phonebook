@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/561.3424c925.chunk.js","mappings":"kKAEA,UAFiB,kBAAM","sources":["views/HomeView.js"],"sourcesContent":["const HomePage = () => <h1>Welcome to your app :)</h1>;\n\nexport default HomePage;\n"],"names":[],"sourceRoot":""}
