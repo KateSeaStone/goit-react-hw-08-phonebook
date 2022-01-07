@@ -4,10 +4,10 @@ import "./AuthNavigation.scss";
 
 const AuthNavigation = () => (
   <div className="authNavigation">
-    <NavLink to="/register" className="link" activeClassName="activeLink">
+    <NavLink to="/register" className=" link active">
       Register
     </NavLink>
-    <NavLink to="/login" className="link" activeClassName="activeLink">
+    <NavLink to="/login" className="link active">
       Login
     </NavLink>
   </div>

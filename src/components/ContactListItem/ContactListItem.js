@@ -5,10 +5,14 @@ import "./ContactListItem.scss";
 const ContactListItem = ({ id, name, number, onDelete }) => {
   return (
     <li key={id} className="item">
-      <p className="contactInfo">
+      <div className="mb-2 ">
         {name}: {number}
-      </p>
-      <button className="deleteBtn" type="button" onClick={() => onDelete(id)}>
+      </div>
+      <button
+        className="btn btn-primary btn-sm m-lg-2"
+        type="button"
+        onClick={() => onDelete(id)}
+      >
         Delete
       </button>
     </li>

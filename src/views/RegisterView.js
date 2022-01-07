@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../redux/auth/auth-operations";
 
-// import '../styles/pages.scss';
-
 export default function RegisterPage() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -40,43 +38,52 @@ export default function RegisterPage() {
 
   return (
     <div>
-      <h1 className="page-title">Registration page</h1>
+      <h2 className="page-title">Registration page</h2>
 
       <form onSubmit={handleSubmit} autoComplete="off">
-        <label className="input_label">
-          Name
-          <input
-            className="form_input"
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-          />
-        </label>
+        <div className="form-group mb-2">
+          <label>
+            Name
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Enter your name"
+              name="name"
+              value={name}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
 
-        <label className="input_label">
-          eMail
-          <input
-            className="form_input"
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
+        <div className="form-group mb-2">
+          <label>
+            Email
+            <input
+              className="form-control"
+              type="email"
+              placeholder="Enter your email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
 
-        <label className="input_label">
-          Password
-          <input
-            className="form_input"
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
+        <div className="form-group mb-2">
+          <label>
+            Password
+            <input
+              className="form-control"
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
 
-        <button className="button" type="submit">
+        <button className="btn btn-primary" type="submit">
           Register
         </button>
       </form>

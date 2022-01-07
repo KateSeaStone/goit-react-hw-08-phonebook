@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import ContactListItem from "../ContactListItem/ContactListItem";
-import "./ContactList.scss";
+
 import { getFilteredContacts } from "../../redux/Contacts/contacts-selectors";
 import {
   deleteContact,
@@ -22,7 +22,7 @@ export default function ContactList() {
   const onDelete = (id) => dispatch(deleteContact(id));
 
   return (
-    <ul className="contactList">
+    <ul className="list-group">
       {contacts.map((contact) => (
         <ContactListItem
           key={contact.id}

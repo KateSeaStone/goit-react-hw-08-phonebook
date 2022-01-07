@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "../redux/auth/auth-operations";
-//import '../styles/pages.scss';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -32,33 +31,39 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="loginWrapper">
-      <h1 className="page-title">Login Page</h1>
+    <div>
+      <h2 className="page-title">Login Page</h2>
 
-      <form className="loginForm" onSubmit={handleSubmit} autoComplete="off">
-        <label className="input_label">
-          Mail
-          <input
-            className="form_input"
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <div className="form-group mb-2">
+          <label>
+            Email
+            <input
+              className="form-control"
+              type="email"
+              placeholder="Enter your email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
 
-        <label className="input_label">
-          Password
-          <input
-            className="form_input"
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
+        <div className="form-group mb-2">
+          <label>
+            Password
+            <input
+              className="form-control"
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </label>
+        </div>
 
-        <button className="button" type="submit">
+        <button className="btn btn-primary" type="submit">
           Log in
         </button>
       </form>

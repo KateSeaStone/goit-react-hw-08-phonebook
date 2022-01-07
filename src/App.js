@@ -1,12 +1,13 @@
 import { useEffect, Suspense, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { getCurrentUser } from "../src/redux/auth/auth-operations";
 import { getIsGettingCurrent } from "./redux/auth/auth-selectors";
 import AppBar from "./components/AppBar";
-import Container from "./components/Container";
+import { Container } from "react-bootstrap";
 import PrivateRoute from "./components/PrivatRoute/PrivateRoute";
 import PublicRoute from "./components/PublicRoute/PublicRoute";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const HomeView = lazy(() => import("./views/HomeView"));
 const ContactsView = lazy(() => import("./views/ContactsView"));
